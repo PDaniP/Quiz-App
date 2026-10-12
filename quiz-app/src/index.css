@@ -173,3 +173,131 @@ button {
     width: 100%;
   }
 }
+
+
+.quiz {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+
+.quiz_card {
+  width: min(760px, 100%);
+  padding: clamp(20px, 4vw, 40px);
+  border: 1px solid #65502c;
+  border-radius: 8px;
+  background: rgb(19 17 29 / 95%);
+  box-shadow: 0 16px 50px rgb(0 0 0 / 35%);
+}
+
+.quiz_header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #d9b56d;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.quiz_progress {
+  height: 6px;
+  margin: 20px 0 32px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #383143;
+}
+
+.quiz_progress_fill {
+  height: 100%;
+  background: #d9b56d;
+  transition: width 250ms ease;
+}
+
+.quiz_card h1 {
+  margin: 0 0 28px;
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  line-height: 1.4;
+}
+
+.quiz_answers {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz_answer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #51455e;
+  border-radius: 5px;
+  background: #242031;
+  color: #f0e6d2;
+  text-align: left;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.quiz_answer:not(:disabled):hover {
+  border-color: #d9b56d;
+  background: #342940;
+}
+
+.quiz_answer:disabled {
+  cursor: default;
+}
+
+.answer_letter {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #806b45;
+  border-radius: 4px;
+  color: #d9b56d;
+  font-weight: 700;
+}
+
+.quiz_answer.correct {
+  border-color: #45a76c;
+  background: #183d2b;
+}
+
+.quiz_answer.incorrect {
+  border-color: #cf5252;
+  background: #492323;
+}
+
+.quiz_feedback {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.quiz_feedback p {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.feedback_correct {
+  background: #183d2b;
+  color: #a9edbd;
+}
+
+.feedback_incorrect {
+  background: #492323;
+  color: #ffc0c0;
+}
+
+.result_score {
+  margin: 24px 0;
+  color: #d9b56d;
+  font-family: "Cinzel", serif;
+  font-size: 4rem;
+  font-weight: 800;
+}
