@@ -1,20 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Quiz({ questions, onFinish }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [score, setScore] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(30);
+    const [timeExpired, setTimeExpired] = useState(false);
 
     const currentQuestion = questions[currentIndex];
+
+    useEffect(() => {
+        if (selectedAnswer !== null) {
+            return;
+        }
+
+        if (timeLeft === 0) {
+            handleAnswer(null);
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            setTimeLeft((previousTime) => previousTime - 1);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+
+    }, [timeLeft, selectedAnswer]);
+
 
     function handleAnswer(answerIndex) {
         if (selectedAnswer !== null) {
             return;
         }
 
-        setSelectedAnswer(answerIndex);
+        if (answerIndex === null) {
+            setTimeExpired(true);
+        } else {
+            setSelectedAnswer(answerIndex);
+        }
 
         const isCorrect =
+            answerIndex !== null &&
             answerIndex === currentQuestion.correctAnswer;
         
         const updatedScore = score + (isCorrect ? 1 : 0);
@@ -26,6 +52,8 @@ function Quiz({ questions, onFinish }) {
                 setScore(updatedScore);
                 setCurrentIndex(currentIndex + 1);
                 setSelectedAnswer(null);
+                setTimeExpired(false)
+                setTimeLeft(30);
             }
         }, 3500);
     }
@@ -45,6 +73,10 @@ function Quiz({ questions, onFinish }) {
                         Pregunta {currentIndex + 1} de {questions.length}
                     </span>
 
+                    <span>
+                        Tiempo: {timeLeft}s
+                    </span>
+                    
                     <span>
                         Aciertos: {score}
                     </span>
@@ -90,7 +122,7 @@ function Quiz({ questions, onFinish }) {
                     })}
                 </div>
 
-                {selectedAnswer !== null && (
+                {(selectedAnswer !== null || timeExpired) && (
                     <div
                         className={`quiz_feedback ${
                             isCorrect ? "feedback_correct" : "feedback_incorrect"
@@ -98,7 +130,9 @@ function Quiz({ questions, onFinish }) {
                         role="status"
                     >
                         <strong>
-                            {isCorrect ? "¡Respuesta correcta!" : "Respuesta incorrecta"}
+                            {timeExpired
+                                ? "¡Se acabo el tiempo!"
+                                : isCorrect ? "¡Respuesta correcta!" : "Respuesta incorrecta"}
                         </strong>
 
                         <p>
