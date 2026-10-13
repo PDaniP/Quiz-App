@@ -43,7 +43,8 @@ function Quiz({ questions, onFinish }) {
             answerIndex !== null &&
             answerIndex === currentQuestion.correctAnswer;
         
-        const updatedScore = score + (isCorrect ? 1 : 0);
+        const pointsEarned = isCorrect ? timeLeft : 0;
+        const updatedScore = score + pointsEarned;
 
         setTimeout(() => {
             if (currentIndex === questions.length - 1) {
@@ -78,7 +79,7 @@ function Quiz({ questions, onFinish }) {
                     </span>
                     
                     <span>
-                        Aciertos: {score}
+                        Puntos: {score}
                     </span>
                 </div>
 
