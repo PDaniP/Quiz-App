@@ -25,7 +25,6 @@ function Ranking({ onHome }) {
     <main className="page ranking_page">
         <p className="home_eyebrow">Heroes de Azeroth</p>
         <h1>Salon de los campeones</h1>
-        <p>Aca se mostran los 10 mejors resultados.</p>
 
         {ranking.length === 0 ? (
             <div className="ranking_empty">

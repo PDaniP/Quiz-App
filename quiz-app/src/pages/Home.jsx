@@ -2,9 +2,6 @@ function Home({ onStart, onRanking }) {
     return (
         <main className="home">
             <section className="home_content">
-                <p className="home_ejebrow">
-                    Cronicas de Azeroth
-                </p>
 
                 <h1>¿Cuanto sabes de World of Warcraft?</h1>
 

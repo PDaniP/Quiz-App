@@ -5,9 +5,6 @@ function Header() {
                 Azeroth Quiz
             </a>
 
-            <span className="header_subtitle">
-                El conocimiento es poder
-            </span>
         </header>
     );
 }

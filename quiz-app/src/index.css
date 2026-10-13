@@ -81,9 +81,10 @@ button {
 
 .home_eyebrow {
   color: #d9b56d;
-  font-size: 0.8rem;
+  font-size: 3rem;
   font-weight: 700;
   letter-spacing: 4px;
+  font-family: "Cinzel", serif;
 }
 
 .home h1,
@@ -146,7 +147,7 @@ button {
 .page {
   width: min(900px, 100%);
   margin: 0 auto;
-  padding: 64px 24px;
+  padding: 5px 60px;
   text-align: center;
 }
 
@@ -174,11 +175,12 @@ button {
   }
 }
 
-
 .quiz {
   min-height: calc(100vh - 76px);
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding: 40px 20px;
 }
 
@@ -343,7 +345,7 @@ button {
 
 
 .ranking_page {
-  width: min(850px, 100%);
+  width: min(700px, 100%);
   margin: 0 auto;
 }
 
@@ -362,7 +364,7 @@ button {
 
 .ranking_table_wrapper {
   width: 100%;
-  margin: 32px 0;
+  margin: 20px 0;
   overflow-x: auto;
   border: 1px solid #65502c;
   border-radius: 8px;
@@ -415,4 +417,10 @@ button {
     padding: 12px 8px;
     font-size: 0.9rem;
   }
+}
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
 }
