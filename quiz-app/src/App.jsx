@@ -66,7 +66,7 @@ function App() {
           />
         )}
 
-        {currentPage === "ranking" && <Ranking />}
+        {currentPage === "ranking" && <Ranking onHome={goHome} />}
 
       </div>
     </>

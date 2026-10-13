@@ -56,7 +56,7 @@ function Quiz({ questions, onFinish }) {
                 setTimeExpired(false)
                 setTimeLeft(30);
             }
-        }, 3500);
+        }, 2000);
     }
 
     if (!currentQuestion) {
